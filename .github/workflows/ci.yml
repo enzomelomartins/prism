@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+
+      - run: npm ci
+
+      # Type-checks and builds the interface.
+      - run: npm run build
+
+      - run: npm test
+
+      - run: cargo test --manifest-path src-tauri/Cargo.toml
+
+      - run: cargo fmt --manifest-path src-tauri/Cargo.toml -- --check
+
+      - run: cargo clippy --manifest-path src-tauri/Cargo.toml -- -D warnings

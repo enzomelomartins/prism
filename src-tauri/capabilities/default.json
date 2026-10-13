@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "The window only needs the core commands and the native folder picker; everything else goes through this app's own commands.",
+  "windows": ["main"],
+  "permissions": ["core:default", "dialog:allow-open"]
+}

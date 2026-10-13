@@ -1,0 +1,38 @@
+{
+  "name": "prism",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Prism — interface de desktop para o yt-dlp, em Tauri + React",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "app": "tauri dev",
+    "app:build": "tauri build",
+    "icons": "tauri icon icon.png"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.9.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.575.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.2.1",
+    "@tauri-apps/cli": "^2.9.0",
+    "@types/node": "^22.16.5",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.8.3",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10"
+  }
+}

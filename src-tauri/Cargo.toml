@@ -1,0 +1,36 @@
+[package]
+name = "prism"
+version = "1.0.0"
+description = "Prism — interface de desktop para o yt-dlp"
+edition = "2021"
+rust-version = "1.82"
+license = "MIT"
+repository = "https://github.com/enzomelomartins/prism.git"
+default-run = "prism"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# native-tls uses the TLS stack already in the operating system (schannel on
+# Windows), which keeps the build free of cmake/NASM toolchains.
+reqwest = { version = "0.12", default-features = false, features = [
+  "blocking",
+  "native-tls",
+] }
+
+# Only the FFmpeg archive is ever opened, and it is plain deflate; the other
+# codecs would pull in C dependencies for nothing.
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

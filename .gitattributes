@@ -1,0 +1,7 @@
+# Normalise line endings so the repository stays identical across machines.
+* text=auto eol=lf
+
+# Binary assets Git must not touch.
+*.png binary
+*.ico binary
+*.icns binary
